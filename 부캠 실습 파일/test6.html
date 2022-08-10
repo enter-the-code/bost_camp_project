@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link ref="stylesheet" type="text/css" href="st.css">
+</head>
+<script>
+    var num=1;
+    function a(){
+        let name=document.getElementById("operater").value;
+        let story=document.getElementById("result").value;
+        let tr=document.getElementById("ta");
+        let D=new Date();
+        let tr_tag=document.createElement("tr");
+        let a=document.createElement("td");
+        a.textContent=String(num++);
+        tr_tag.appendChild(a);
+        let b=document.createElement("td");
+        b.textContent=name;
+        tr_tag.appendChild(b);
+        let c=document.createElement("td");
+        c.textContent=story;
+        tr_tag.appendChild(c);
+        let d=document.createElement("td");
+        d.textContent=D.getFullYear()+"-"+D.getMonth()+"-"+D.getDate()+' '+D.getHours()+" : "+D.getMinutes();
+        tr_tag.appendChild(d);
+
+        tr.append(tr_tag);
+    }
+
+
+</script>
+
+<body>
+    <div>방명록이라네용</div>
+    <div>
+        쓰니:<input type="text" id="operater">
+    </div><div>
+        내용:<input type="text" id="result">
+    </div>
+    <table id="ta" border="1" cellpadding="5">
+        <tr>
+            <td>번호</td>
+            <td>작성자</td>
+            <td>내용</td>
+            <td>작성일</td>
+        </tr>
+
+    </table>
+    <button type="button" onclick="a();">계산하기</button>
+
+</body>
+
+</html>

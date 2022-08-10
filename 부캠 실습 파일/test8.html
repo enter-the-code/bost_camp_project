@@ -1,0 +1,217 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link ref="stylesheet" type="text/css" href="st.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+        </script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+        integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <style>
+        .body_div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            background-color: aqua;
+
+        }
+
+        .menu {
+            position: fixed;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 150px;
+            top: 0;
+            margin-left: -155px;
+            border: 1px solid black;
+            box-shadow: 3px 3px 3px 3px gray;
+            z-index: 2;
+
+        }
+
+        .menu_element {
+            margin: 10%;
+            margin-top: 20%;
+        }
+
+        .menu_hov {
+            position: absolute;
+            background-color: transparent;
+            width: 2%;
+            height: 100%;
+            z-index: 1000;
+            top: 0;
+        }
+
+        .menu:hover {
+            margin-left: 0%;
+            transition: 0.5s;
+
+        }
+
+        .menu_hov:hover~.menu {
+            margin-left: 0%;
+            transition: 0.5s;
+        }
+
+        .chat_window {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+
+        }
+
+        .button_pos {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            background-color: blueviolet;
+            display: flex;
+
+        }
+
+        .test {
+            right: -30%;
+            box-shadow: 5px 5px 5px 5px gray inset;
+            height: 100%;
+            background-color: transparent;
+            width: 0%;
+        }
+
+        .lll {
+            display: flex;
+        }
+
+
+
+        button {
+            position: relative;
+            right: 0;
+            width: 50px;
+            height: 50px
+        }
+
+        .small_menu {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            width: 200px;
+            background-color: white;
+            left: -200px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar bg-light" style="position: relative; width:100%;z-index:1;">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="position:reletive;">
+                <img src="./img.jpeg" alt="" width="200" height="40">
+            </a>
+
+        </div>
+    </nav>
+    <div class="menu_hov" style="color:white;"></div>
+    <div class="menu" style="background-color: white;">
+        <nav class="nav flex-column" style="height:100%; width:100% ;display:flex; align-items: center; ">
+            <a class="num1 nav-link active menu_element" aria-current="page" href="#">Active</a>
+            <a class="nav-link menu_element" href="#">Link</a>
+            <a class="nav-link menu_element" href="#">Link</a>
+            <a class="nav-link disabled menu_element">Disabled</a>
+        </nav>
+    </div>
+    <div class="body_div">
+
+        <div class="lll" style="height: 100%;background-color:beige;flex-grow:1;">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col">
+                        Column
+                    </div>
+                    <div class="col">
+                        Column
+                    </div>
+                    <div class="col">
+                        Column
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="chat_btn btn btn-primary"><=</button>
+            <div class="small_menu">
+                <ul>
+                    <li>1efewfew</li>
+                    <li>2wefewf</li>
+                    <li>3wefewfw</li>
+                    <li>4wefewfe</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test"></div>
+    </div>
+
+
+
+
+
+
+    <script>
+        var state = "close";
+        $(document).ready(function () {
+            $('.num1').hover(function () {
+                $(".small_menu").css({ "left": "150px", "transition": "1s" });
+            }, function () {
+                $(".small_menu").css({
+                    "left": "-200px",
+                    "transition": "0s"
+                });
+            });
+        });
+        if (state == "close") {
+            state = "run"
+            console.log(state);
+            $(".chat_btn").hover(() => {
+                $(".chat_btn").text("=>");
+                $(".test").css({
+                    "width": "30%",
+                    "transition": "1s"
+                })
+                state = "open";
+                console.log(state);
+            }, () => {
+
+            }
+            )
+        }
+
+        $(".chat_btn").on("click", () => {
+            $(".chat_btn").text("<=")
+            $(".test").css({
+                "width": "0%"
+            })
+            state = "close"
+            console.log(state);
+        })
+
+    </script>
+</body>
+
+</html>
